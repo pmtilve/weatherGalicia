@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var animations_1 = require("@angular/platform-browser/animations");
 var dialog_component_1 = require("./dialog/dialog.component");
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
@@ -22,7 +23,7 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, http_1.HttpModule, container_module_1.ContainerModule, material_1.MaterialModule],
+        imports: [platform_browser_1.BrowserModule, http_1.HttpModule, container_module_1.ContainerModule, animations_1.NoopAnimationsModule, material_1.MdProgressSpinnerModule, material_1.MaterialModule],
         declarations: [app_component_1.AppComponent, header_component_1.HeaderComponent, dialog_component_1.DialogWindowComponent, dialog_component_1.DialogWindowDialogComponent],
         bootstrap: [app_component_1.AppComponent],
         entryComponents: [
