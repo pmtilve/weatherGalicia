@@ -33,7 +33,7 @@ var AppComponent = (function () {
             console.log('load ' + cityName);
             this.weatherService.getForecastByCityNameifNeeded(cityName)
                 .subscribe(function (data) {
-                console.log('container get data', data);
+                console.log('get data', data);
                 _this.data = data;
             }, function (error) {
                 _this.errorMessage = error;

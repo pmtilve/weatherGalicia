@@ -24,7 +24,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.currentCity = this.citys[0];
     this.getData(this.citys[0]);
-
   }
 
   onHeaderComponentChange(cityName: string) {
@@ -40,7 +39,7 @@ export class AppComponent implements OnInit {
         this.weatherService.getForecastByCityNameifNeeded(cityName)
           .subscribe(
           data => {
-            console.log('container get data',data)
+            console.log('get data',data)
             this.data = data;
           },
           error => { 

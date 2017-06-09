@@ -17,10 +17,10 @@ var ContainerComponent = (function () {
         set: function (value) {
             this.city = value !== undefined && value !== null ? value['city']['name'] : "";
             this.country = value !== undefined && value !== null ? value['city']['country'] : "";
-            this.day1 = value !== undefined && value !== null ? value['list'][0] : "";
-            this.day2 = value !== undefined && value !== null ? value['list'][1] : "";
-            this.day3 = value !== undefined && value !== null ? value['list'][2] : "";
-            this.day4 = value !== undefined && value !== null ? value['list'][3] : "";
+            this.day1 = value !== undefined && value !== null ? value['list'][0] : {};
+            this.day2 = value !== undefined && value !== null ? value['list'][1] : {};
+            this.day3 = value !== undefined && value !== null ? value['list'][2] : {};
+            this.day4 = value !== undefined && value !== null ? value['list'][3] : {};
         },
         enumerable: true,
         configurable: true
@@ -29,8 +29,8 @@ var ContainerComponent = (function () {
 }());
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Array),
-    __metadata("design:paramtypes", [Array])
+    __metadata("design:type", Object),
+    __metadata("design:paramtypes", [Object])
 ], ContainerComponent.prototype, "data", null);
 ContainerComponent = __decorate([
     core_1.Component({

@@ -15,16 +15,19 @@ var DayweatherComponent = (function () {
     }
     Object.defineProperty(DayweatherComponent.prototype, "infoWeather", {
         set: function (value) {
-            console.log(value);
-            if (value !== undefined) {
-                this.clouds = value !== undefined && value !== null ? value['clouds'] : 0;
-                this.dt = value !== undefined && value !== null ? value['dt'] * 1000 : 0;
-                this.main = value !== undefined && value !== null ? value['temp'] : [];
-                this.weather = value !== undefined && value !== null ? value['weather'] : [];
-                this.icon = this.weather == [] ? "" : this.weather[0]['icon'];
-                this.description = this.weather == [] ? "" : this.weather[0]['description'];
-                this.speed = value !== undefined && value !== null ? value['speed'] * 3.6 : 0;
-                this.humidity = value !== undefined && value !== null ? value['humidity'] : 0;
+            console.log('daywather', value);
+            if (Object.keys(value).length !== 0) {
+                this.date = value['dt'] * 1000;
+                this.clouds = value['clouds'];
+                this.speed = value['speed'] * 3.6;
+                this.humidity = value['humidity'];
+                var main = value['temp'];
+                var weather = value['weather'];
+                this.icon = weather[0]['icon'];
+                this.description = weather[0]['description'];
+                this.mintemp = main['min'];
+                this.maxtemp = main['max'];
+                this.daytemp = main['day'];
             }
         },
         enumerable: true,
@@ -34,8 +37,8 @@ var DayweatherComponent = (function () {
 }());
 __decorate([
     core_1.Input(),
-    __metadata("design:type", Array),
-    __metadata("design:paramtypes", [Array])
+    __metadata("design:type", Object),
+    __metadata("design:paramtypes", [Object])
 ], DayweatherComponent.prototype, "infoWeather", null);
 DayweatherComponent = __decorate([
     core_1.Component({

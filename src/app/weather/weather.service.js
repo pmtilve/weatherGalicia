@@ -21,59 +21,19 @@ var WeatherService = (function () {
     }
     WeatherService.prototype.getForecastByCityNameifNeeded = function (cityName) {
         var _this = this;
-        this.cityName = cityName;
-        /*Si pasan de los 10 minutos desde la ultima llamada llama al servicio*/
-        if (this.shouldFetch()) {
-            return this.http.get(this.baseUrl + 'forecast/daily?q=' + cityName + '&appid=' + this.ApiKey + '&units=metric&lang=es')
-                .map(function (response) { return _this.extractData(response); })
-                .catch(this.handleError);
-        }
-        else {
-            console.log('not shouldFech forescat');
-            ;
-            var ls = localStorage.getItem(cityName);
-            if (ls != null) {
-                return Observable_1.Observable.of(JSON.parse(ls));
-            }
-            else {
-                return this.handleError('FREE VERSION, no puede consultar la siguiente predicción hasta dentro de ' + this.timeWait + ' minutos');
-            }
-        }
+        return this.http.get(this.baseUrl + 'forecast/daily?q=' + cityName + '&appid=' + this.ApiKey + '&units=metric&lang=es')
+            .map(function (response) { return _this.extractData(response); })
+            .catch(this.handleError);
     };
     WeatherService.prototype.extractData = function (res) {
         var body = res.json();
         var result = body || [];
-        console.log("extradatas " + result);
-        this.saveInfoInLocalStorage(result);
         return result;
     };
     WeatherService.prototype.handleError = function (error) {
         var errMsg = error || 'server error';
         console.error(errMsg);
         return Observable_1.Observable.throw(errMsg);
-    };
-    /* guardar localstorage y los datos de la ciudad consultada*/
-    WeatherService.prototype.saveInfoInLocalStorage = function (data) {
-        localStorage.setItem('updated', JSON.stringify(new Date()));
-        localStorage.setItem(this.cityName, JSON.stringify(data));
-    };
-    ;
-    /* function devuelve true si hace mas de 10 minutos que se hizo la ultima llamada */
-    WeatherService.prototype.shouldFetch = function () {
-        var updatedLS = JSON.parse(localStorage.getItem('updated'));
-        var diffDate = 0;
-        if (updatedLS !== null && updatedLS !== undefined) {
-            diffDate = +new Date() - +new Date(updatedLS);
-            this.timeWait = 10 - new Date(diffDate).getMinutes();
-        }
-        ;
-        if (updatedLS === null || updatedLS === undefined ||
-            (diffDate > (10 * 60 * 1000))) {
-            return true;
-        }
-        else {
-            return false;
-        }
     };
     return WeatherService;
 }());
