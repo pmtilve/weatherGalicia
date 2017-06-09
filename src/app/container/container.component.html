@@ -1,0 +1,14 @@
+<main> 
+  <div>
+    <h2>{{city}}, {{country}}</h2>
+
+    <div class="row ">
+      <app-dayweather [infoWeather]="day1" class="col-md-4"></app-dayweather>
+    </div>
+    <div class="row">
+      <app-dayweather class="col-md-4" [infoWeather]="day2"></app-dayweather>
+      <app-dayweather class="col-md-4" [infoWeather]="day3"></app-dayweather>
+      <app-dayweather class="col-md-4" [infoWeather]="day4"></app-dayweather>
+    </div>
+  </div>
+</main>

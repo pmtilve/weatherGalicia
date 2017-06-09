@@ -1,0 +1,28 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    {{dt | date :'EEEE' }}
+    <h4>{{dt | date :'dd MMMM' }}</h4>
+  </div>
+  <div class="panel-body">
+
+
+    <div class="row">
+      <div class="col-md-3">
+        <img src="http://openweathermap.org/img/w/{{icon}}.png" >
+        <div class="text-center">
+          <span class="small text-primary">{{main['min'] | number:'2.0-0'}}°</span>
+          <span class="small text-danger"> {{main['max'] | number:'2.0-0'}}°</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <span class="text-capitalize">{{description}}</span>
+        <h2> {{main['day'] | number:'2.0-0' }}° </h2>
+      </div>
+     <div class="col-md-5" >
+        <span class="small">Nubosidad: {{clouds}} %</span>
+        <span class="small">Humedad: {{humidity}}%</span>
+        <span class="small">Velocidad:{{speed | number:'1.0-0'}} km/h</span>
+      </div>
+
+  </div>
+</div>
