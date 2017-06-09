@@ -37,7 +37,7 @@ export class DayweatherComponent {
       this.maxtemp = main['max'];
       this.daytemp = main['day'];
       }
-    }
+    
 
   }
 
