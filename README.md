@@ -4,8 +4,13 @@ El tiempo en Galicia es una pequeña aplicación web que consume los servicios d
 
 ## Instalación
 Clonar el repositorio e instalar las dependencias
-
+```
 $ git clone https://github.com/pmtilve/weatherGalicia.git
-$ cd [my-app-name]
+
+$ cd weatherGalicia
+
 $ npm install
+
 $ npm start
+```
+
